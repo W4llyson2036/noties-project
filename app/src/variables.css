@@ -1,0 +1,11 @@
+:root{
+    --bg-0: rgb(34,15,55);
+    --bg-1: rgb(16,36,67);
+    --color-white: #ffffff;
+    --color-gray: rgb(153, 153, 153);
+    --universal-button-bg: rgb(127, 255, 106);
+
+    --ff: 'Inter', sans-serif;
+
+    --fs-400: 5.5rem;
+}

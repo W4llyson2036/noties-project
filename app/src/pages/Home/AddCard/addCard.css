@@ -1,0 +1,57 @@
+.section-create-card {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin-left: 275px;
+}
+
+.container-new-card {
+    width: 42rem;
+    border-radius: 0.5rem;
+    padding-inline: 0.5rem;
+    border: #0095ff dashed 2px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.deckname {
+    font-size: 1.5rem;  
+    margin-block: 0.5rem; 
+}
+
+.input-card-text {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    margin-block: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: white;
+}
+
+.input-card-textarea {
+    resize: none;
+    height: 15rem;
+    background-color: white;
+}
+
+.create-card-button {
+    gap: 0.5rem;
+    display: flex;
+    justify-content: space-around;
+    margin-block: 0.5rem;
+}
+
+.create-card-button div {
+    width: 150px;
+}
+
+@media screen and (max-width: 48.75rem) {
+    .section-create-card {
+        margin: 0;
+    }
+
+    .create-card-button div{
+        width: 100%;
+    }
+}
