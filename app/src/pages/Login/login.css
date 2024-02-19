@@ -35,6 +35,12 @@
     border-radius: 0.3rem;
 }
 
+.login-message-erro {
+    height: 19px;
+    color: red;
+    margin-block: 0.6rem;
+}
+
 .create-new-account {
     margin-block: 1rem;
     color: var(--color-gray);

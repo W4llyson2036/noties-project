@@ -7,9 +7,9 @@ import './home.css'
 export function Home(){
     const [myDeck, setMyDeck] = useState(
         // ['english', 'math','english', 'math','english', 'math', 'english', 'math' ,'english', 'math', 'english', 'math','english', 'math','english']
-        ['skaks dddddddddd xccccccccc xxxxxxxxx ssssssx zzzzzzzz hehhehe ', 'math kkkkkkk kkkkkkkkk kkkkkkkkkk kkkkkkkkk kkkkkkkk kkkkk']
+        // ['skaks dddddddddd xccccccccc xxxxxxxxx ssssssx zzzzzzzz hehhehe ', 'math kkkkkkk kkkkkkkkk kkkkkkkkkk kkkkkkkkk kkkkkkkk kkkkk']
         // [45, 45, 45]
-        // []
+        []
         );
 
     let deckElements = myDeck.map(item => (
