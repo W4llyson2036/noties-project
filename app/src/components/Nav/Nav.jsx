@@ -3,12 +3,12 @@ import { NavLink, Link } from 'react-router-dom'
 import '../../variables.css'
 import './nav.css'
 
+import { logout } from '../../firebase/auth/logOut'
+
 export default function Nav() {
     const [buguerIsOpen, setBuguerIsOpen] = useState(false);
 
-    function logout() {
-        console.log("log out")
-    }
+   
 
     return(
         <>

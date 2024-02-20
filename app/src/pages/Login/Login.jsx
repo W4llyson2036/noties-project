@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { UniversalButton } from "../../components/UniversalButton/UniversalButton"
 import { Link, Navigate } from "react-router-dom"
-
 // Firebase
 import { doLogin } from "../../firebase/auth/login"
 
