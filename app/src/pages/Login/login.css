@@ -18,7 +18,7 @@
 
 .login-main {
     width: 500px;
-    padding: 0 1rem;
+    padding: 1rem 1rem;
     text-align: center;
     border-radius: 0.5rem;
     margin-inline: 1rem;
@@ -41,7 +41,4 @@
     margin-block: 0.6rem;
 }
 
-.create-new-account {
-    margin-block: 1rem;
-    color: var(--color-gray);
-}
+.btn-create-new-account { color: var(--color-gray);}

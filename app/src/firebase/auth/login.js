@@ -5,9 +5,7 @@ export async function doLogin(email, password, setIsLoggedIn, setLoginError) {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
-        if (userCredential.user) {
-            setIsLoggedIn(true);
-        };
+        if (userCredential.user) setIsLoggedIn(true);
     
     } catch (error) {
         setLoginError(true);

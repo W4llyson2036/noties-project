@@ -62,8 +62,8 @@ export function Login() {
                         {loginError && <p>Invalid email or password.</p>}
                     </div>
 
-                    <Link to='/creatnewaccount'>
-                        <p className="create-new-account">Create new account</p>
+                    <Link to='/creatnewaccount' className="btn-create-new-account">
+                        Create new account
                     </Link>
                 </main>
             </section>

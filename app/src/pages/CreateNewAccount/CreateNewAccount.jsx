@@ -1,18 +1,27 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
+
+// Component
 import { UniversalButton } from "../../components/UniversalButton/UniversalButton";
-import './createNewAccount.css';
+
+// Firebase
+import { createAccount } from "../../firebase/auth/createAccount";
+
+// CSS
 import '../../variables.css';
+import './createNewAccount.css';
 
 export function CreateNewAccount() {
     const [newAccount, setNewAccount] = useState({
         email: '',
-        password: ''
+        password: '',
     });
 
-    function signIn() {
-        console.log('new Account was created')
-    }
+    const [createAccountMessage, setCreateAccountMessage] = useState({
+        message: 'account was created',
+        error: false,
+        success: false
+    });
 
     function handleNewAccountInput(ev) {
         let { name, value } = ev.target;
@@ -27,6 +36,7 @@ export function CreateNewAccount() {
                 <input 
                     name="email"
                     type="email" 
+                    autoComplete="off"
                     placeholder="Email"
                     className="signin-input"
                     value={newAccount.email}
@@ -36,6 +46,7 @@ export function CreateNewAccount() {
                 <input 
                     name="password"
                     type="password" 
+                    autoComplete="off"
                     placeholder="Password"
                     className="signin-input"
                     value={newAccount.password}
@@ -48,11 +59,18 @@ export function CreateNewAccount() {
                     padding="1rem"
                     margin='auto'
                     value="Sign in"
-                    click={signIn}
+                    click={() => createAccount(newAccount.email, newAccount.password, setCreateAccountMessage)}
                 />
-                <Link to='/'>
-                    <p className="back">Back</p>
-                </Link>
+
+                <div className="display-message">
+                    {createAccountMessage.error && 
+                    <p className="msg-error">{createAccountMessage.message}</p>}
+                    
+                    {createAccountMessage.success && 
+                    <p className="msg-success">{createAccountMessage.message}</p>}
+                </div>
+
+                <Link to='/' className="btn-back">back</Link>
             </div>
         </section>
     );
