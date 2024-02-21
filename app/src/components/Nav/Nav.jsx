@@ -8,8 +8,6 @@ import { logout } from '../../firebase/auth/logOut'
 export default function Nav() {
     const [buguerIsOpen, setBuguerIsOpen] = useState(false);
 
-   
-
     return(
         <>
             <button 
