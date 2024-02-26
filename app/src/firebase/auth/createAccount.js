@@ -19,7 +19,6 @@ export async function createAccount(email, password, setCreateAccountMessage) {
                 errorMessage = 'fill out the blanck';
                 break;
         }
-
         setCreateAccountMessage({error: true, message: errorMessage});
     }
 

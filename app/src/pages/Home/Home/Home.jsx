@@ -1,26 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom"
+
+// Components
 import { UniversalButton } from "../../../components/UniversalButton/UniversalButton";
 
+// Firebase
+import { getDocument } from "../../../firebase/accessData/getDocCurrentUser";
+
+// CSS
 import './home.css'
 
-export function Home(){
-    const [myDeck, setMyDeck] = useState(
-        // ['english', 'math','english', 'math','english', 'math', 'english', 'math' ,'english', 'math', 'english', 'math','english', 'math','english']
-        // ['skaks dddddddddd xccccccccc xxxxxxxxx ssssssx zzzzzzzz hehhehe ', 'math kkkkkkk kkkkkkkkk kkkkkkkkkk kkkkkkkkk kkkkkkkk kkkkk']
-        // [45, 45, 45]
-        []
-        );
+export function Home() {
+    const [myDeck, setMyDeck] = useState([]);
+    const [id, setId] = useState('');
+
+    useEffect(() => {
+        let credential = localStorage.getItem('id');
+        setId(credential);
+            if (id) {
+                getDocument(id, setMyDeck);
+            }
+        }, [id]);
 
     let deckElements = myDeck.map(item => (
-         <div className="my-deck">
+         <div className="my-deck" key={item.id}>
             <p className="deck-name"> 
-                {item}
+                {item.deckName}
             </p>
             
             <div className="container-deck-buttons">
-                <Link to='/home/createcard' className="link"> 
-                    <UniversalButton bg='#00A400' width='100%' value='add' padding='0.3rem'  />
+                <Link to={`/home/createcard/${item.deckName}/${item.id}`} className="link"> 
+                    <UniversalButton 
+                        bg='#00A400' 
+                        width='100%' 
+                        value='add' 
+                        padding='0.3rem'
+                        onClick={() => add(item.id)}  
+                        />
                 </Link>
 
                 <Link to='/home/review' className="link">

@@ -1,8 +1,15 @@
 import React, { useState } from "react";
-import './addCard.css'
+import { useParams } from "react-router-dom";
+
+// Components
+import { addCard } from "../../../firebase/addCard";
 import { UniversalButton } from "../../../components/UniversalButton/UniversalButton";
 
+// CSS
+import './addCard.css'
+
 export function AddCard() {
+    const params = useParams();
     const [card, setCard] = useState({
         cardFront: '',
         cardBack: ''
@@ -13,21 +20,14 @@ export function AddCard() {
         setCard(prevCard => ({...prevCard, [name]: value}));
     }
 
-    function add() {
-        console.log('added')
-    }
-
     function cancel() {
         console.log('cancel')
     }
 
-    console.log(card.cardFront)
-    console.log(card.cardBack)
-
     return (
         <section className="section-create-card">
             <div className="container-new-card">
-                <p className="deckname">Deck: name hahaah k here testeng kaksas lksklaksla skasja akskajs skajksjas</p>
+                <p className="deckname">{`deck: ${params.fordeckname}`}</p>
 
                 <input 
                     name="cardFront"
@@ -53,7 +53,7 @@ export function AddCard() {
                 <div className="create-card-button">
                     <div>
                         <UniversalButton width='100%' value='add' padding='0.5rem' bg='#1F734A' 
-                        click={add}/>
+                        click={() => addCard(card, params.id)}/>
                     </div>
 
                     <div>

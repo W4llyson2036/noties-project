@@ -1,6 +1,12 @@
 import React, { useState } from "react";
+
+// Components
 import { UniversalButton } from "../../components/UniversalButton/UniversalButton";
 
+// Firebase
+import { createDeck } from "../../firebase/createDeck";
+
+// CSS
 import './createNewDeck.css'
 
 export function CreateNewDeck() {
@@ -8,10 +14,6 @@ export function CreateNewDeck() {
 
     function handleInput(value) {
         setDeckName(value);
-    }
-
-    function createDeck() {
-        console.log("created")
     }
 
     return (
@@ -30,7 +32,7 @@ export function CreateNewDeck() {
                     width='50%'
                     margin='auto'
                     padding='1rem'
-                    click={createDeck}
+                    click={() => createDeck(deckName)}
                     />
             </div>
         </section>

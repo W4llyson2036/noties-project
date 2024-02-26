@@ -1,19 +1,16 @@
-//Back here later
+import { auth } from "../firebaseConfig.js";
+import { onAuthStateChanged } from "firebase/auth";
 
-// import { auth } from "../firebaseConfig.js";
-// import { onAuthStateChanged } from "firebase/auth";
+export let UserId = null;
 
-// let userName = null;
-
-// export function authState() {
-//     onAuthStateChanged(auth, (currentUser) => {
-//         if (currentUser) {
-//             const uid = currentUser;
-//             userName = uid.email
-//         } else {
-//             console.log("Nenhum usuário está autenticado.")
-//         };
-//     });
-// };
-
-// console.log(userName)
+export function authState() {
+    onAuthStateChanged(auth, (currentUser) => {
+        if (currentUser) {
+            UserId = auth.currentUser.uid; 
+            let json = JSON.stringify(UserId).split('"').join('');
+            localStorage.setItem('id', json);
+        } else {
+            console.log("Nenhum usuário está autenticado.")
+        };
+    });
+};
