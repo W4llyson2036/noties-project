@@ -6,6 +6,7 @@ import { UniversalButton } from "../../../components/UniversalButton/UniversalBu
 
 // Firebase
 import { getDocument } from "../../../firebase/accessData/getDocCurrentUser";
+import { removeDeck } from "../../../firebase/removeDeck";
 
 // CSS
 import './home.css'
@@ -53,7 +54,8 @@ export function Home() {
                         bg='#FF2727' 
                         width='100%' 
                         value='delete'
-                        padding='0.3rem'    
+                        padding='0.3rem' 
+                        click={() => removeDeck(item.id)}   
                         />
                 </Link>
             </div>
