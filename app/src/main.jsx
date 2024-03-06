@@ -23,7 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route element={<MainLayout />}>
             <Route path='/home' element={<Home />}/>
             <Route path='/home/createcard/:fordeckname/:id' element={<AddCard />}/>
-            <Route path='/home/review' element={<ReviewCard />}/>
+            <Route path='/home/review/:deckname/:id' element={<ReviewCard />}/>
             <Route path='/createnewdeck' element={<CreateNewDeck />}/>
           </Route>  
       </Routes>

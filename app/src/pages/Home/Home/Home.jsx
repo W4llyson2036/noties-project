@@ -17,6 +17,7 @@ export function Home() {
 
     useEffect(() => {
         let credential = localStorage.getItem('id');
+       
         setId(credential);
             if (id) {
                 getDocument(id, setMyDeck);
@@ -40,7 +41,7 @@ export function Home() {
                         />
                 </Link>
 
-                <Link to='/home/review' className="link">
+                <Link to={`/home/review/${item.deckName}/${item.id}`} className="link">
                     <UniversalButton 
                         bg='#485BFF' 
                         width='100%' 
