@@ -1,7 +1,13 @@
 import { db } from "../firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 
+// Class
+import { FormatDate } from "../../utils/formateDateAndTime";
+
 export async function getCardForReview(params) {
+    const Format_Date = new FormatDate().getFormattedDate();
+    const CURRENT_DATE = Format_Date.getFormattedDate;
+
     try {
         const userCollectionRef = collection(db, `user - ${localStorage.getItem('id')}`);
         const userDocs = await getDocs(userCollectionRef);
@@ -17,10 +23,18 @@ export async function getCardForReview(params) {
                 date: doc.data().createdAt.date,
                 hour: doc.data().createdAt.hour,
             } : null,
-            reviewAt: doc.data().reviewAt,
+            dateNextReview: doc.data().dateNextReview,
         }));
 
-        return listCardsForReview;
+        let listOfCardAvailableToReview = [];
+
+        for(let i = 0; i < listCardsForReview.length; i++) {
+            if (listCardsForReview[i].dateNextReview === null || listCardsForReview[i] == CURRENT_DATE) {
+                listOfCardAvailableToReview.push(listCardsForReview[i]);
+            }
+        }
+
+        return listOfCardAvailableToReview;
         
     } catch (error) {
         console.error("Erro ao obter documentos:", error);

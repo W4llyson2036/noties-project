@@ -26,18 +26,19 @@
 
 .card-question { height: 8rem; }
 .card-answer { height: 15rem; }
-.hidden-answer-true { display: none; }
-.hidden-answer-false { display: block; }
+.hidden-answer-false { display: none; }
+.hidden-answer-true { display: block; }
 
-.review-card-button {
+.box-review-card-button {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 0.5rem;
-    display: flex;
-    justify-content: space-around;
-    margin-block: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
-.review-card-button div {
-    width: 150px;
+.btn-show-answer {
+    width: 100%;
+    grid-column: span 2;
 }
 
 @media screen and (max-width: 48.75rem) {
@@ -45,7 +46,7 @@
         margin: 0;    
     }
 
-    .review-card-button div{
+    .box-review-card-button div{
         width: 100%;
     }
 }

@@ -33,7 +33,7 @@ export class FormatDate {
     }
 
     getFormattedDate() {
-        let currentDate = `${this.day()}/${this.month()}/${this.year()}`;
+        let currentDate = `${this.year()}-${this.month()}-${this.day()}`;
         return currentDate;        
     }
 

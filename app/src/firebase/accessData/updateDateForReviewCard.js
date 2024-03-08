@@ -28,8 +28,8 @@ export async function updateDateForReviewCard(collectionId, answerValue, cardId)
 async function setTheDateForTheNextReview(card) {
     let currentDate = new Date();
     let increaseDays = (card.data().doubleDays) * 2;  
-    let nextReviewDate = new Date(currentDate.setTime(currentDate.getTime() + (increaseDays * 3600 * 1000)));
-    
+    let nextReviewDate = new Date(currentDate.setTime(currentDate.getTime() + (increaseDays * 3600 * 1000))).toISOString().slice(0, 10);
+
     return {
         days: increaseDays, 
         nextReviewDate: nextReviewDate

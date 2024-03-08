@@ -8,17 +8,14 @@ export async function createAccount(email, password, setCreateAccountMessage) {
     } catch (error) {
         let errorMessage = '';
 
-        switch(error.code) {
-            case "auth/weak-password":
-                errorMessage = 'weak password';
-                break;
-            case "auth/email-already-in-use":
-                errorMessage = 'email already in use';
-                break;
-            default:
-                errorMessage = 'fill out the blanck';
-                break;
+        if (error.code === "auth/weak-password") {
+            errorMessage = 'weak password';
+        } else if (error.code === "auth/email-already-in-use") {
+            errorMessage = 'email already in use';
+        } else {
+            errorMessage = 'fill out the blank';
         }
+        
         setCreateAccountMessage({error: true, message: errorMessage});
     }
 
