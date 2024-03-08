@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 // Components
 import { UniversalButton } from "../../../components/UniversalButton/UniversalButton";
@@ -13,7 +13,7 @@ import './reviewCard.css';
 
 export function ReviewCard() {
     const params = useParams();
-    const [listOfCardsToReview, setlistOfCardsToReview] = useState('');
+    const [listOfCardsToReview, setlistOfCardsToReview] = useState([]);
     const [displayAnswer, setDisplayAnswer] = useState(false);
     const [switchBtnColor, setSwitchBtnColor] = useState({
         btnGood: '#1F734A',
@@ -38,47 +38,61 @@ export function ReviewCard() {
 
     return (
         <section className="section-review-card">
-            <div className="container-review-card">
-                <p className="deckname">{`Deck: ${params.deckname}`}</p>
+            {listOfCardsToReview.length > 0 ? 
+            (<div className="container-review-card">
+                <div className="box-there-is-card-to-review">
+                    <p className="deckname">{`Deck: ${params.deckname}`}</p>
 
-                <p className="card-text card-question">
-                    {listOfCardsToReview.length > 0 ? listOfCardsToReview[0].cardFront : null}
-                </p>
-
-                <div className="card-answer">
-                    <p className={`hidden-answer-${displayAnswer}`}>
-                        {listOfCardsToReview.length > 0 ? listOfCardsToReview[0].cardBack : null}
+                    <p className="card-text card-question">
+                        {listOfCardsToReview[0].cardFront}
                     </p>
-                </div>
 
-                <div className="box-review-card-button">
-                    <UniversalButton 
-                        width='100%' 
-                        value='good' 
-                        padding='0.5rem' 
-                        bg={displayAnswer ? switchBtnColor.btnGood : switchBtnColor.default} 
-                        click={() => displayAnswer ? answer('good') : null} 
-                    />
+                    <div className="card-answer">
+                        <p className={`hidden-answer-${displayAnswer}`}>
+                            {listOfCardsToReview[0].cardBack}
+                        </p>
+                    </div>
 
-                    <UniversalButton 
-                        width='100%' 
-                        value='bad' 
-                        padding='0.5rem' 
-                        bg={displayAnswer ? switchBtnColor.btnBad : switchBtnColor.default}
-                        click={() => displayAnswer ? answer('bad') : null} 
-                    />
-
-                    <div className="btn-show-answer">
+                    <div className="box-review-card-button">
                         <UniversalButton 
                             width='100%' 
-                            value='show answer' 
+                            value='good' 
                             padding='0.5rem' 
-                            bg={displayAnswer ? switchBtnColor.default : switchBtnColor.btnShowAnswer}
-                            click={() => setDisplayAnswer(isTrue => !isTrue)}
-                        />
+                            bg={displayAnswer ? switchBtnColor.btnGood : switchBtnColor.default} 
+                            click={() => displayAnswer ? answer('good') : null} 
+                            />
+
+                        <UniversalButton 
+                            width='100%' 
+                            value='bad' 
+                            padding='0.5rem' 
+                            bg={displayAnswer ? switchBtnColor.btnBad : switchBtnColor.default}
+                            click={() => displayAnswer ? answer('bad') : null} 
+                            />
+
+                        <div className="btn-show-answer">
+                            <UniversalButton 
+                                width='100%' 
+                                value='show answer' 
+                                padding='0.5rem' 
+                                bg={displayAnswer ? switchBtnColor.default : switchBtnColor.btnShowAnswer}
+                                click={() => setDisplayAnswer(isTrue => !isTrue)}
+                                />
+                        </div>
                     </div>
                 </div>
-            </div>
+            </div>)
+            :  (<div className="deck-without-card-to-review">
+                    <p>there is no card to study now, come back later!</p>
+                    <Link to='/home'>
+                        <UniversalButton 
+                            width='100%' 
+                            value='back' 
+                            padding='0.5rem' 
+                            bg='#FFA500'
+                            />
+                    </Link>
+                </div>)}
         </section>
     )
 }
