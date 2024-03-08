@@ -1,0 +1,22 @@
+.section-about {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin-left: 275px;
+}
+
+.container-about {
+    width: 500px;
+    padding: 1rem 1rem;
+    margin-inline: 1rem;
+    border-radius: 0.5rem;
+    border: #0095ff dashed 2px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 48.75rem) {
+    .section-about { margin: 0; }
+    .create-about div{ width: 100%; }
+}

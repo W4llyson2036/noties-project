@@ -10,6 +10,7 @@ import { MainLayout } from './layout/MainLayout'
 import { CreateNewDeck } from './pages/CreateNewDeck/CreateNewDeck'
 import { AddCard } from './pages/Home/AddCard/AddCard'
 import { ReviewCard } from './pages/Home/ReviewCard/ReviewCard'
+import { About } from './pages/About/About'
 
 // CSS
 import './index.css'
@@ -25,6 +26,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path='/home/createcard/:fordeckname/:id' element={<AddCard />}/>
             <Route path='/home/review/:deckname/:id' element={<ReviewCard />}/>
             <Route path='/createnewdeck' element={<CreateNewDeck />}/>
+            <Route path='/about' element={<About />}/>
           </Route>  
       </Routes>
     </BrowserRouter>
