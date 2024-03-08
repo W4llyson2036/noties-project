@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
 // Components
-import { addCard } from "../../../firebase/addCard";
+import { addCard } from "../../../firebase/addCard.js";
 import { UniversalButton } from "../../../components/UniversalButton/UniversalButton";
 
 // CSS
@@ -20,8 +20,11 @@ export function AddCard() {
         setCard(prevCard => ({...prevCard, [name]: value}));
     }
 
-    function cancel() {
-        console.log('cancel')
+    function cleanInput() {
+        setCard(() => ({
+            cardFront: '',
+            cardBack: ''
+        }))
     }
 
     return (
@@ -52,13 +55,22 @@ export function AddCard() {
 
                 <div className="create-card-button">
                     <div>
-                        <UniversalButton width='100%' value='add' padding='0.5rem' bg='#1F734A' 
-                        click={() => addCard(card, params.id)}/>
+                        <UniversalButton 
+                            width='100%' 
+                            value='add' 
+                            padding='0.5rem' 
+                            bg='#1F734A' 
+                            click={() => addCard(card, params.id, cleanInput)}
+                            />
                     </div>
 
                     <div>
-                        <UniversalButton width='100%' value='cancel' padding='0.5rem' bg='#FF2727'
-                        click={cancel}/>
+                        <UniversalButton 
+                            width='100%' 
+                            value='clean' 
+                            padding='0.5rem' 
+                            bg='#FF2727'
+                            click={cleanInput}/>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,7 @@ import { addCardForReview } from "./addCardForReview";
 // Class
 import { FormatTime, FormatDate } from "../utils/formateDateAndTime";
 
-export async function addCard(card, param) {
+export async function addCard(card, param, cleanInput) {
     const FORMATTED_TIME = new FormatTime();
     const FORMATTED_DATE = new FormatDate();
 
@@ -28,7 +28,8 @@ export async function addCard(card, param) {
         };
         
         await addDoc(subCollectionRef, { NEW_CARD });
-        addCardForReview(NEW_CARD, matchingDoc)
+        addCardForReview(NEW_CARD, matchingDoc);
+        cleanInput();
 
     } catch (error) {
         console.error('Error fetching documents: ', error);

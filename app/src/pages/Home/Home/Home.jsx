@@ -17,12 +17,9 @@ export function Home() {
 
     useEffect(() => {
         let credential = localStorage.getItem('id');
-       
         setId(credential);
-            if (id) {
-                getDocument(id, setMyDeck);
-            }
-        }, [id]);
+        getDocument(id, setMyDeck);
+    }, [id]);
 
     let deckElements = myDeck.map(item => (
          <div className="my-deck" key={item.id}>
@@ -72,7 +69,7 @@ export function Home() {
             ):( <Link to='/createnewdeck'>
                     <h2 className="container-home">create new deck</h2>
                 </Link>
-            )}
+            )} 
         </section>
     )
 }
