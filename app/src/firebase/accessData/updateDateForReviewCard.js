@@ -19,8 +19,8 @@ export async function updateDateForReviewCard(collectionId, answerValue, cardId)
         });
     } else {
         await updateDoc(cardDocRef, {
-            dateNextReview: null,
-            doubleDays: 24
+            dateNextReview: resultForNextReviewUpdated.nextReviewDate,
+            doubleDays: resultForNextReviewUpdated.days
         });
     }
 }

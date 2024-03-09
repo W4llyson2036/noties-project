@@ -24,7 +24,7 @@ export async function addCard(card, param, cleanInput) {
                 hour: FORMATTED_TIME.time(),
             },
             dateNextReview: null,
-            doubleDays: 24,
+            doubleDays: 6,
         };
         
         await addDoc(subCollectionRef, { NEW_CARD });
