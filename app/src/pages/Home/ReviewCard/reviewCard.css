@@ -20,7 +20,7 @@
 .card-question,
 .card-answer {
     padding: 0.5rem;
-    overflow: scroll;
+    overflow-x: hidden;
     margin-block: 0.5rem;
     border-radius: 0.5rem;
     border: solid #575757 0.1155rem;
@@ -29,7 +29,11 @@
 .card-question { height: 8rem; }
 .card-answer { height: 15rem; }
 .hidden-answer-false { display: none; }
-.hidden-answer-true { display: block; }
+.hidden-answer-true { 
+    display: block; 
+    background-color: rgb(0, 75, 94);
+    height: 100vh;
+}
 
 .box-review-card-button {
     display: grid;

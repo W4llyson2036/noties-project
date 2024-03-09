@@ -48,9 +48,9 @@ export function ReviewCard() {
                     </p>
 
                     <div className="card-answer">
-                        <p className={`hidden-answer-${displayAnswer}`}>
+                        <pre className={`hidden-answer-${displayAnswer}`}>
                             {listOfCardsToReview[0].cardBack}
-                        </p>
+                        </pre>
                     </div>
 
                     <div className="box-review-card-button">
