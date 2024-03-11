@@ -63,12 +63,12 @@ nav {
     }
 
     .buguer-open {
-        background: url(svg/buguer-open.svg) no-repeat center center;
+        background: url(dist/svg/buguer-open.svg) no-repeat center center;
         background-size: cover;
     }
 
     .buguer-closed {
-        background: url(svg/buguer-closed.svg) no-repeat center center;
+        background: url(dist/svg/buguer-closed.svg) no-repeat center center;
         background-size: cover;
     }
 
