@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 // Components
 import { UniversalButton } from "../../components/UniversalButton/UniversalButton";
@@ -11,15 +11,23 @@ import './createNewDeck.css'
 
 export function CreateNewDeck() {
     const [deckName, setDeckName] = useState('');
+    const inputRef = useRef();
 
     function handleInput(value) {
         setDeckName(value);
     }
 
+    function inputFocus() { inputRef.current.focus()};
+
+    useEffect(() => {
+        inputFocus();
+    }, []);
+
     return (
         <section className="section-create-new-deck">
             <div className="container-create-new-deck">
                 <input 
+                    ref={inputRef}
                     type="text" 
                     className="input-field"
                     value={deckName}
