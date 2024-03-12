@@ -17,6 +17,14 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.display-message-when-creating-deck {
+    text-align: center;
+    height: 1rem;
+}
+
+.deckWasCreated {color: rgb(127, 255, 106);}
+.deckWasNotCreated {color: red;}
+
 .input-field {
     width: 100%;
     padding: 0.5rem;
