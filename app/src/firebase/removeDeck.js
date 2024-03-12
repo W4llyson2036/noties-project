@@ -1,12 +1,12 @@
 import { db } from "./firebaseConfig";
 import { auth } from "./firebaseConfig";
-import { deleteDoc, doc } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDoc } from "firebase/firestore";
 
 export async function removeDeck(removeDeckId) {
     try {
-        const docRef = doc(db, `user - ${auth.currentUser.uid}`, removeDeckId);
-
-        await deleteDoc(docRef);
+        const colRef = collection(db, `user - ${auth.currentUser.uid}`);
+        const docRef = doc(colRef, removeDeckId)
+        await deleteDoc(docRef)
     } catch (error) {
         console.log(error);
     }
