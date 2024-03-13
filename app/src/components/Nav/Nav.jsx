@@ -8,6 +8,10 @@ import { logout } from '../../firebase/auth/logOut'
 export default function Nav() {
     const [buguerIsOpen, setBuguerIsOpen] = useState(false);
 
+    function closeBuguer() {
+        setBuguerIsOpen(false);
+    }
+
     return(
         <>
             <button 
@@ -20,19 +24,24 @@ export default function Nav() {
                     <NavLink 
                         to='/home'
                         // isActive its the current "path"
-                        className={({isActive}) => isActive ? "item" : "item-not-select"}> 
+                        className={({isActive}) => isActive ? "item" : "item-not-select"}
+                        onClick={closeBuguer}
+                        > 
                         <li>Decks</li>
                     </NavLink>
 
                     <NavLink 
                         to='/createNewdeck'
-                        className={({isActive}) => isActive ? "item" : "item-not-select"}>
+                        className={({isActive}) => isActive ? "item" : "item-not-select"}
+                        onClick={closeBuguer}
+                        >
                         <li>Create new deck</li>
                     </NavLink>
 
                     <NavLink 
                         to='/About'
-                        className={({isActive}) => isActive ? 'item' : "item-not-select"}>
+                        className={({isActive}) => isActive ? 'item' : "item-not-select"}
+                        onClick={closeBuguer}>
                         <li>About</li>
                     </NavLink>
                 </ul>
