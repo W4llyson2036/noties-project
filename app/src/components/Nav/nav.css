@@ -58,17 +58,17 @@ nav {
     .buguer {
         display: block;
         position: fixed;
-        top: 0.5rem;
-        right: 0.5rem;
+        top: 0.6rem;
+        right: 0.6rem;
     }
 
     .buguer-open {
-        background: url(dist/svg/buguer-open.svg) no-repeat center center;
+        background: url(../../../public/svg/buguer-open.svg) no-repeat center center;
         background-size: cover;
     }
 
     .buguer-closed {
-        background: url(dist/svg/buguer-closed.svg) no-repeat center center;
+        background: url(../../../public/svg/buguer-closed.svg) no-repeat center center;
         background-size: cover;
     }
 
