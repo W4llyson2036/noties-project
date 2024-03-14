@@ -10,28 +10,41 @@ export async function updateDateForReviewCard(collectionId, answerValue, cardId)
     // 'getDoc()"" é usado para obter um snapshot de um documento específico no Firestore
     const cardDocSnapshot = await getDoc(cardDocRef);
 
-    let resultForNextReviewUpdated = await setTheDateForTheNextReview(cardDocSnapshot);
-
     if (answerValue === 'good') {
+        let newDate = await newDateForCardWithCorrectAnswer(cardDocSnapshot);
+        
         await updateDoc(cardDocRef, {
-            dateNextReview: resultForNextReviewUpdated.nextReviewDate,
-            doubleDays: resultForNextReviewUpdated.days,
+            dateNextReview: newDate.nextReviewDate,
+            doubleDays: newDate.days,
         });
-    } else {
+    }  
+   
+    if (answerValue === 'bad') {
+        let newDate = await newDateForCardWithIncorrectAnswer(cardDocSnapshot);
+        
         await updateDoc(cardDocRef, {
-            dateNextReview: resultForNextReviewUpdated.nextReviewDate,
-            doubleDays: resultForNextReviewUpdated.days
+            dateNextReview: newDate.nextReviewDate,
+            doubleDays: 12,
         });
     }
 }
 
-async function setTheDateForTheNextReview(card) {
+async function newDateForCardWithCorrectAnswer(card) {
     let currentDate = new Date();
     let increaseDays = (card.data().doubleDays) * 2;  
     let nextReviewDate = new Date(currentDate.setTime(currentDate.getTime() + (increaseDays * 3600 * 1000))).toISOString().slice(0, 10);
 
     return {
         days: increaseDays, 
+        nextReviewDate: nextReviewDate
+    }; 
+}
+
+async function newDateForCardWithIncorrectAnswer() {
+    let currentDate = new Date();
+    let nextReviewDate = new Date(currentDate.setTime(currentDate.getTime() + (24 * 3600 * 1000))).toISOString().slice(0, 10);
+    
+    return {
         nextReviewDate: nextReviewDate
     }; 
 }
