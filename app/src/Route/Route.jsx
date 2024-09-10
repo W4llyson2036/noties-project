@@ -39,7 +39,7 @@ export const routes = createBrowserRouter([
                 element: <About />
             }
             , {
-                path: '/cards',
+                path: '/viewcards',
                 element: <ViewCards />
             }
         ]

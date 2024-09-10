@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+// lib
+import { useState }      from 'react'
 import { NavLink, Link } from 'react-router-dom'
+
+// Components
+import { logout }        from '../../firebase/auth/logOut'
+
+// CSS
 import '../../variables.css'
 import './nav.css'
-
-import { logout } from '../../firebase/auth/logOut'
 
 export default function Nav() {
     const [buguerIsOpen, setBuguerIsOpen] = useState(false);
@@ -43,6 +47,13 @@ export default function Nav() {
                         className={({isActive}) => isActive ? 'item' : "item-not-select"}
                         onClick={closeBuguer}>
                         <li>About</li>
+                    </NavLink>
+
+                    <NavLink 
+                        to='/viewcards'
+                        className={({isActive}) => isActive ? 'item' : "item-not-select"}
+                        onClick={closeBuguer}>
+                        <li>View Card</li>
                     </NavLink>
                 </ul>
 
