@@ -1,6 +1,6 @@
-import { db } from "./firebaseConfig";
-import { auth } from "./firebaseConfig";
-import { collection, deleteDoc, doc, getDoc } from "firebase/firestore";
+import { db }                         from "./firebaseConfig";
+import { auth }                       from "./firebaseConfig";
+import { collection, deleteDoc, doc } from "firebase/firestore";
 
 export async function removeDeck(removeDeckId) {
     try {

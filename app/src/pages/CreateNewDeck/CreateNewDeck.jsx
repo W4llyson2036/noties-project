@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState }        from "react";
 
 // Components
-import { UniversalButton } from "../../components/UniversalButton/UniversalButton";
+import { UniversalButton }                    from "../../components/UniversalButton/UniversalButton";
 
 // Firebase
-import { createDeck } from "../../firebase/createDeck";
+import { createDeck }                         from "../../firebase/createDeck";
 
 // CSS
 import './createNewDeck.css'
@@ -65,5 +65,3 @@ export function CreateNewDeck() {
         </section>
     )
 }
-
-

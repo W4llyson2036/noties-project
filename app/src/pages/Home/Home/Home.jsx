@@ -1,25 +1,23 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom"
+// lib
+import { Link }                 from "react-router-dom";
+import { useState, useEffect }  from "react";
 
 // Components
-import { UniversalButton } from "../../../components/UniversalButton/UniversalButton";
+import { UniversalButton }      from "../../../components/UniversalButton/UniversalButton";
 
 // Firebase
-import { getDocument } from "../../../firebase/accessData/getDocCurrentUser";
-import { removeDeck } from "../../../firebase/removeDeck";
+import { removeDeck }           from "../../../firebase/removeDeck";
+import { getDocument }          from "../../../firebase/accessData/getDocCurrentUser";
 
 // CSS
-import './home.css'
+import './home.css';
 
 export function Home() {
     const [myDeck, setMyDeck] = useState([]);
-    const [id, setId] = useState('');
 
     useEffect(() => {
-        let credential = localStorage.getItem('id');
-        setId(credential);
-        getDocument(id, setMyDeck);
-    }, [id]);
+        getDocument(setMyDeck);
+    }, []);
 
     let deckElements = myDeck.map(item => (
          <div className="my-deck" key={item.id}>
@@ -62,14 +60,17 @@ export function Home() {
 
     return (
         <section className="section-home">
-            { myDeck.length > 0 ? (
+            {myDeck.length > 0 && (
                 <div className="container-deck">
                     {deckElements}
                 </div>
-            ):( <Link to='/createnewdeck'>
+            )}
+
+            {!myDeck.length && (
+                 <Link to='/createnewdeck'>
                     <h2 className="container-home">create new deck</h2>
-                </Link>
-            )} 
+                </Link>    
+            )}
         </section>
     )
 }

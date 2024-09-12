@@ -1,4 +1,4 @@
-import { auth } from "../firebaseConfig.js";
+import { auth }               from "../firebaseConfig.js";
 import { onAuthStateChanged } from "firebase/auth";
 
 export let UserId = null;
@@ -11,6 +11,6 @@ export function authState() {
             localStorage.setItem('id', json);
         } else {
             console.log("Nenhum usuário está autenticado.")
-        };
+        }
     });
-};
+}
