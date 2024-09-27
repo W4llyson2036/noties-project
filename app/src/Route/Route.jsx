@@ -11,6 +11,7 @@ import { AddCard }             from '../pages/Home/AddCard/AddCard';
 import { CreateNewDeck }       from '../pages/CreateNewDeck/CreateNewDeck';
 import { About }               from '../pages/About/About';
 import { ViewCards }           from '../pages/ViewCards/ViewCards';
+import { EditCard }            from '../pages/ViewCards/EditCard/EditCard';
 
 export const routes = createBrowserRouter([
     {
@@ -41,6 +42,9 @@ export const routes = createBrowserRouter([
             , {
                 path: '/viewcards',
                 element: <ViewCards />
+            }, {
+                path: '/viewcards/:deckname/:id',
+                element: <EditCard />
             }
         ]
     }

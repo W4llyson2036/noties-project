@@ -1,10 +1,10 @@
-import { db } from "./firebaseConfig";
-import { auth } from "./firebaseConfig";
-import { collection, addDoc, getDocs } from "firebase/firestore";
-import { addCardForReview } from "./addCardForReview";
+import { db }                           from "./firebaseConfig";
+import { auth }                         from "./firebaseConfig";
+import { collection, addDoc, getDocs }  from "firebase/firestore";
+import { addCardForReview }             from "./addCardForReview";
 
 // Class
-import { FormatTime, FormatDate } from "../utils/formateDateAndTime";
+import { FormatTime, FormatDate }       from "../utils/formateDateAndTime";
 
 export async function addCard(card, param, cleanInput) {
     const FORMATTED_TIME = new FormatTime();
@@ -30,7 +30,6 @@ export async function addCard(card, param, cleanInput) {
         await addDoc(subCollectionRef, { NEW_CARD });
         addCardForReview(NEW_CARD, matchingDoc);
         cleanInput();
-
     } catch (error) {
         console.error('Error fetching documents: ', error);
         throw error;

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams }       from "react-router-dom";
 
 // Components
-import { addCard } from "../../../firebase/addCard.js";
+import { addCard }         from "../../../firebase/addCard.js";
 import { UniversalButton } from "../../../components/UniversalButton/UniversalButton";
 
 // CSS
-import './addCard.css'
+import './addCard.css';
 
-export function AddCard() {
+export function AddCard() { 
     const params = useParams();
     const [card, setCard] = useState({
         cardFront: '',

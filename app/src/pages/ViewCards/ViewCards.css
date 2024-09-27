@@ -49,6 +49,18 @@
   min-height: 150px;
   margin-block: 0.1rem;
   border: 1px white solid;
+
+  position: relative;
+}
+
+.btn-edit-card {
+  padding: 0.2rem 0.5rem;
+  background-color: red;
+  font-size: 0.9rem;
+
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
 .cardFront {

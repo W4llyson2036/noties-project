@@ -1,11 +1,12 @@
 // lib
-import { useEffect, useState }    from 'react';
+import { useEffect, useState }       from 'react';
+import { Link }                      from 'react-router-dom';
 
 // hooks
-import { getDocument }            from '../../firebase/accessData/getDocCurrentUser';
+import { getDocument }               from '../../firebase/accessData/getDocCurrentUser';
 
 // class
-import { fetchCardsFromAllDecks } from '../../firebase/accessData/fetchCardsFromAllDecks';
+import { useFetchCardsFromAllDecks } from '../../firebase/accessData/fetchCardsFromAllDecks';
 
 // CSS
 import './ViewCards.css';
@@ -13,15 +14,18 @@ import './ViewCards.css';
 export function ViewCards() {
     const [nameOfAllDecks, setNameOfAllDecks] = useState([]);
     const [allCards, setAllCards] = useState([]);
+    const { data } = useFetchCardsFromAllDecks();
 
     useEffect(() => {
         getDocument(setNameOfAllDecks);
-        fetchCardsFromAllDecks().then(resuld => setAllCards(resuld));
-    }, []);
+        if (data) {
+            setAllCards(data);
+        }
+    }, [data]);
 
     return (
         <section className="section-view-cards">
-            <div className='container-search-cards'>
+            <div className='container-search-cards a'>
                 <div>
                     <input type="text" id='search-card' placeholder='search-card'/>
                     <svg className="icon-search">
@@ -36,10 +40,13 @@ export function ViewCards() {
                 </select>
             </div>
 
-            {allCards.map((card) => (
+            {allCards.map((card, index) => (
                 <div className='container-card' key={card.id}>
+                    <Link to={`/viewcards/${card.name.replaceAll(" ", '-')}/${index}-${card.id}` }>
+                        <button className='btn-edit-card'>edit {card.name}</button>
+                    </Link>
                     <p className='cardFront'>{card.cardFront} </p>
-                    <p className='cardBack'>{card.cardBack}</p>
+                    <p className='cardBack'>{card.cardBack}</p> 
                 </div>
             ))}
         </section>
