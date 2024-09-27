@@ -54,13 +54,23 @@
 }
 
 .btn-edit-card {
-  padding: 0.2rem 0.5rem;
-  background-color: red;
-  font-size: 0.9rem;
-
+  padding: 0.2rem 1rem;
+  background-color: rgb(255, 196, 86);
+  font-size: 0.8rem;
+  
   position: absolute;
   right: 10px;
-  top: 10px;
+  bottom: 10px;
+}
+
+.tag-deck-name {
+  padding: 0.2rem 1rem;
+  font-size: 0.8rem;
+  background-color: rgb(71, 140, 206);
+  
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
 }
 
 .cardFront {

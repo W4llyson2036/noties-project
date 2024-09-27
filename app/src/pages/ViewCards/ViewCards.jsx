@@ -42,8 +42,9 @@ export function ViewCards() {
 
             {allCards.map((card, index) => (
                 <div className='container-card' key={card.id}>
+                    <span className='tag-deck-name'>{card.name}</span>
                     <Link to={`/viewcards/${card.name.replaceAll(" ", '-')}/${index}-${card.id}` }>
-                        <button className='btn-edit-card'>edit {card.name}</button>
+                        <button className='btn-edit-card'>edit</button>
                     </Link>
                     <p className='cardFront'>{card.cardFront} </p>
                     <p className='cardBack'>{card.cardBack}</p> 

@@ -1,19 +1,27 @@
 // lib
-import { useState }      from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { useState }         from 'react';
+import { NavLink, Link }    from 'react-router-dom';
+import { useQueryClient }   from '@tanstack/react-query';
+
 
 // Components
-import { logout }        from '../../firebase/auth/logOut'
+import { logout }           from '../../firebase/auth/logOut';
 
 // CSS
 import '../../variables.css'
 import './nav.css'
 
 export default function Nav() {
+    const queryClient = useQueryClient();
     const [buguerIsOpen, setBuguerIsOpen] = useState(false);
 
     function closeBuguer() {
         setBuguerIsOpen(false);
+    }
+
+    function handleLogout() {
+        logout();
+        queryClient.removeQueries('allCards');
     }
 
     return(
@@ -58,7 +66,7 @@ export default function Nav() {
                 </ul>
 
                 <Link to='/'>
-                    <button className='logout' onClick={logout}>Log out</button>
+                    <button className='logout' onClick={handleLogout}>Log out</button>
                 </Link>
             </nav>
         </>
