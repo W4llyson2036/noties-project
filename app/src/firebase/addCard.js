@@ -5,8 +5,11 @@ import { addCardForReview }             from "./addCardForReview";
 
 // Class
 import { FormatTime, FormatDate }       from "../utils/formateDateAndTime";
+import { useRefetchQuery } from "../hooks/useRefetchQuery";
 
 export async function addCard(card, param, cleanInput) {
+    // let refetch = useRefetchQuery(); 
+
     const FORMATTED_TIME = new FormatTime();
     const FORMATTED_DATE = new FormatDate();
 

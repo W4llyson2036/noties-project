@@ -1,5 +1,5 @@
-import { db, auth } from "./firebaseConfig.js";
-import { collection, addDoc } from "firebase/firestore";
+import { db, auth }             from "./firebaseConfig.js";
+import { collection, addDoc }   from "firebase/firestore";
 
 export async function createDeck(deckName, cleanInput, setMessageCreatedDeck) {
     try {

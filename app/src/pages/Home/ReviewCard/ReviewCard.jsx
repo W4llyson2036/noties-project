@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+// lib
+import React, { useEffect, useState }   from "react";
+import { useParams, Link }              from "react-router-dom";
 
 // Components
-import { UniversalButton } from "../../../components/UniversalButton/UniversalButton";
+import { UniversalButton }              from "../../../components/UniversalButton/UniversalButton";
 
 // Firebase
-import { getCardForReview } from "../../../firebase/accessData/getCardForReview";
-import { updateDateForReviewCard } from "../../../firebase/accessData/updateDateForReviewCard";
+import { getCardForReview }             from "../../../firebase/accessData/getCardForReview";
+import { updateDateForReviewCard }      from "../../../firebase/accessData/updateDateForReviewCard";
 
 // CSS
 import './reviewCard.css';

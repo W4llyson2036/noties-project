@@ -1,15 +1,20 @@
-import { useEffect, useRef, useState }        from "react";
+// lib
+import { useEffect, useRef, useState }      from "react";
+
+// hooks
+import { useRefetchQuery }                  from "../../hooks/useRefetchQuery";
 
 // Components
-import { UniversalButton }                    from "../../components/UniversalButton/UniversalButton";
+import { UniversalButton }                  from "../../components/UniversalButton/UniversalButton";
 
 // Firebase
-import { createDeck }                         from "../../firebase/createDeck";
+import { createDeck }                       from "../../firebase/createDeck";
 
 // CSS
 import './createNewDeck.css'
 
 export function CreateNewDeck() {
+    const refetchQuery = useRefetchQuery(); 
     const inputRef = useRef();
     const [deckName, setDeckName] = useState('');
     const [messageCreatedDeck, setMessageCreatedDeck] = useState({
@@ -27,11 +32,12 @@ export function CreateNewDeck() {
     }
 
     function inputFocus() { 
-        inputRef.current.focus()
+        inputRef.current.focus();
     }
 
-    function cleanInput() { 
+    function cleanInput() {     
         setDeckName(''); 
+        refetchQuery('decksNames');
     }
 
     return (
@@ -52,7 +58,7 @@ export function CreateNewDeck() {
                     {messageCreatedDeck.state === false && 
                     <p className="deckWasNotCreated">{messageCreatedDeck.deckWasNotCreated} </p>}
                 </div>
-
+                {/* add link  */}
                 <UniversalButton 
                     value='create new deck' 
                     bg='#00A400'

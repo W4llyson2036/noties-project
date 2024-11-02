@@ -1,10 +1,11 @@
 // lib
-import React, { useEffect, useState }   from "react";
 import { useParams,Link }               from "react-router-dom";
-import { useQueryClient, useMutation }  from "@tanstack/react-query";
+import React, { useEffect, useState }   from "react";
+import { useQueryClient, useMutation,
+        useQuery }                      from "@tanstack/react-query";
 
 // hooks
-import { useFetchCardsFromAllDecks }    from "../../../firebase/accessData/fetchCardsFromAllDecks";
+import { fetchCardsFromAllDecks }       from "../../../firebase/accessData/fetchCardsFromAllDecks";
 
 // javascript
 import { updateCard }                   from "../../../firebase/accessData/updateCard";
@@ -16,10 +17,14 @@ import { UniversalButton }              from "../../../components/UniversalButto
 import './EditCard.css';
 
 export function EditCard() {
-    const queryClient = useQueryClient();
+    const queryClient = useQueryClient(); 
     const PARAMS = useParams();
-    const [currentCard, setCurrentCard] = useState(null); 
-    const { data, isLoading } = useFetchCardsFromAllDecks();
+    const [currentCard, setCurrentCard] = useState({}); 
+    const { data, isPending } = useQuery({
+        queryKey: ['allCards'], 
+        queryFn: fetchCardsFromAllDecks,
+        staleTime: Infinity,
+    });
 
     const mutation = useMutation({
         mutationFn: ({ params, cardid, currentCard }) => updateCard(params, cardid, currentCard),
@@ -27,20 +32,18 @@ export function EditCard() {
             queryClient.invalidateQueries({ queryKey: ['allCards'] });
         }
     });
-  
+
     useEffect(() => {
         if (data) {
-            const CARD_INDEX = PARAMS.id.slice(0, PARAMS.id.indexOf('-'));    
-            setCurrentCard(data[CARD_INDEX]);  
+            // difference between find and filter
+            setCurrentCard(data.find(card => card.id === PARAMS.id));  
+            // task: fix when delete deck updade the home
+            // console.log('is fresh: ', data.find(card => card.id === PARAMS.id))
         }
     }, [data]);
 
-    if (isLoading) {
+    if (isPending) {
         return <p>Loading...</p>;
-    }
-
-    if (!currentCard) {
-        return <p>Card not found or loading...</p>;
     }
 
     function handleInput(e) {
@@ -49,11 +52,9 @@ export function EditCard() {
     }
 
     function saveChange() {
-        const CARD_ID = PARAMS.id.slice(PARAMS.id.indexOf('-') + 1);    
-
         mutation.mutate({
-            params: PARAMS.deckname,
-            cardid: CARD_ID,
+            params: PARAMS.deckname.replace(/-/g, ' '),
+            cardid: PARAMS.id,
             currentCard: currentCard
         });
     }
@@ -65,7 +66,6 @@ export function EditCard() {
                     <textarea 
                         className="input-edit-cardfront"
                         name="cardFront" 
-                        id="" 
                         value={currentCard.cardFront || ''}
                         onChange={(e => handleInput(e))}
                         >
@@ -73,7 +73,6 @@ export function EditCard() {
                     <textarea 
                         className="input-edit-cardback"
                         name="cardBack" 
-                        id="" 
                         value={currentCard.cardBack || ''}
                         onChange={(e => handleInput(e))}
                     >

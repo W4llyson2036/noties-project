@@ -1,7 +1,6 @@
 // firebase
-import { db } from "../firebaseConfig";
-
-import { collection, getDocs, updateDoc } from "firebase/firestore";
+import { db }                               from "../firebaseConfig";
+import { collection, getDocs, updateDoc }   from "firebase/firestore";
 
 export async function updateCard(deckName, cardID, newsValues) {
     try {

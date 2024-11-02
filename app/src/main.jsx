@@ -27,7 +27,7 @@ const persister = createSyncStoragePersister({
 })   
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
+    // <React.StrictMode>
         <PersistQueryClientProvider 
             client={client} 
             persistOptions={{persister}}
@@ -35,5 +35,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <RouterProvider router={routes} /> 
             <ReactQueryDevtools initialIsOpen={false} />
         </PersistQueryClientProvider>
-  </React.StrictMode>
+//   </React.StrictMode> 
 )
