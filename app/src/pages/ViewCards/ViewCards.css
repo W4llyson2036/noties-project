@@ -18,12 +18,11 @@
 
 .container-search-cards div {
   height: 50px;
+  display: flex;
 }
 
 .icon-search {
   width: 50px;
-  cursor: pointer;
-  padding: 0.3rem;
   background-color: rgb(192, 192, 192);
 }
 

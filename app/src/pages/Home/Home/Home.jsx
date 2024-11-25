@@ -20,7 +20,7 @@ export function Home() {
     const { data, isPending, refetch } = useQuery({
         queryFn: getDocument,
         queryKey: ['decksNames'],
-        // staleTime: Infinity,
+        staleTime: 2000,
     })
 
     useEffect(() => {
@@ -28,8 +28,6 @@ export function Home() {
             setDecks(data); 
         }
     }, [data]);   
-
-    // console.log(data)
 
     // if (data.length == 0) {
     //     return (
@@ -51,49 +49,50 @@ export function Home() {
 
     return (
         <section className="section-home">
-                {isPending ? <p>AWAIT A MOMENT!!!</p> :
-                <div className="container-deck">
-                    {decks.map((item, index) => (
-                        <div className="my-deck" key={index}>
-                            <p className="deck-name"> 
-                                {item.deckName}
-                            </p>
-                        
-                            <div className="container-deck-buttons">
-                                <Link to={`/home/createcard/${item.deckName}/${item.id}`} className="link"> 
-                                    <UniversalButton 
-                                        bg='#00A400' 
-                                        width='100%' 
-                                        value='add' 
-                                        padding='0.3rem'
-                                        onClick={() => add(item.id)}  
-                                        />
-                                </Link>
+                {isPending 
+                    ?   <p>AWAIT A MOMENT!!!</p> 
+                    :   <div className="container-deck">
+                        {decks.map((item, index) => (
+                            <div className="my-deck" key={index}>
+                                <p className="deck-name"> 
+                                    {item.deckName}
+                                </p>
+                                
+                                <div className="container-deck-buttons">
+                                    <Link to={`/home/createcard/${item.deckName}/${item.id}`} className="link"> 
+                                        <UniversalButton 
+                                            bg='#00A400' 
+                                            width='100%' 
+                                            value='add' 
+                                            padding='0.3rem'
+                                            onClick={() => add(item.id)}  
+                                            />
+                                    </Link>
+                    
+                                    <Link to={`/home/review/${item.deckName}/${item.id}`} className="link">
+                                        <UniversalButton 
+                                            bg='#485BFF' 
+                                            width='100%' 
+                                            value='review'
+                                            padding='0.3rem'  
+                                            totalCardAvailable={item.numberOfCards}  
+                                            />
+                                    </Link>
                 
-                                <Link to={`/home/review/${item.deckName}/${item.id}`} className="link">
-                                    <UniversalButton 
-                                        bg='#485BFF' 
-                                        width='100%' 
-                                        value='review'
-                                        padding='0.3rem'    
-                                        />
-
-                                        <div>number: {item.numberOfCards}</div>
-                                </Link>
-            
-                                <Link>
-                                    <UniversalButton 
-                                        bg='#FF2727' 
-                                        width='100%' 
-                                        value='delete'
-                                        padding='0.3rem' 
-                                        click={() => removeDeckFromUI(index, item.id)}   
-                                        />
-                                </Link>
-                            </div>
-                        </div> 
-                    ))}
-                </div>}
+                                    <Link>
+                                        <UniversalButton 
+                                            bg='#FF2727' 
+                                            width='100%' 
+                                            value='delete'
+                                            padding='0.3rem' 
+                                            click={() => removeDeckFromUI(index, item.id)}   
+                                            />
+                                    </Link>
+                                </div>
+                            </div> 
+                        ))}
+                    </div>
+                }
         </section>
     )
 }

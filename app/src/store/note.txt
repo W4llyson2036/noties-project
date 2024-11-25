@@ -1,1 +1,0 @@
-aq ficam as definições  de state manager, contexAPI, redux 

@@ -37,8 +37,6 @@ export function EditCard() {
         if (data) {
             // difference between find and filter
             setCurrentCard(data.find(card => card.id === PARAMS.id));  
-            // task: fix when delete deck updade the home
-            // console.log('is fresh: ', data.find(card => card.id === PARAMS.id))
         }
     }, [data]);
 

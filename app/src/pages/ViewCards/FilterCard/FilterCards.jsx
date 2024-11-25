@@ -1,23 +1,44 @@
 // lib
-import { useEffect, useState }  from "react";
+import { useEffect, useState }      from "react";
 
 // hook
-import { getDocument }          from "../../../firebase/accessData/getDocCurrentUser";
+import { useQuery }                 from "@tanstack/react-query";
 
-export function FilterCards({ setCardsFilted }) {
+// firebase
+import { getDocument }              from "../../../firebase/accessData/getDocCurrentUser";
+
+// state
+import { useFilteredCardState }     from "../../../store/useFilterCards";
+
+export function FilterCards() {
     const [nameOfAllDecks, setNameOfAllDecks] = useState([]);
-    const { data } = getDocument();
+    
+    const { data: nameDesk } = useQuery({
+        queryKey: ['decksNames'],
+        queryFn: getDocument,
+        staleTime: Infinity,
+        refetchOnMount: false
+    })
 
+    // zustand
+    const { setFilteredCard } = useFilteredCardState();
+    
     useEffect(() => {
-        if (data) setNameOfAllDecks(data);
-    }, []);
+        setNameOfAllDecks(nameDesk);
+    }, [])
 
     return (
-        <select name="deck-names" id="" onClick={(ev) => setCardsFilted(ev.target.value)} >
-             <option value="all-cards">All Cards</option> 
+        <select name="deck-names" onChange={(ev) => setFilteredCard(ev.target.value)}>
+            <option value="all-cards" onClick={(ev)=> {
+                setFilteredCard('all-cards');
+                // setSearchQuery('');
+                // setFilteredCard('');
+            }}>All Cards</option> 
             
             {nameOfAllDecks.map(deck => (
-                 <option key={deck.id} value={deck.deckName}>{deck.deckName}</option>
+                <option key={deck.id} value={deck.deckName}>
+                    {deck.deckName}
+                </option>
             ))}
         </select>
     )

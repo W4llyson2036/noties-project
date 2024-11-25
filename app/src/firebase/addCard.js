@@ -5,7 +5,7 @@ import { addCardForReview }             from "./addCardForReview";
 
 // Class
 import { FormatTime, FormatDate }       from "../utils/formateDateAndTime";
-import { useRefetchQuery } from "../hooks/useRefetchQuery";
+import { useRefetchQuery }              from "../hooks/useRefetchQuery";
 
 export async function addCard(card, param, cleanInput) {
     // let refetch = useRefetchQuery(); 
@@ -26,7 +26,7 @@ export async function addCard(card, param, cleanInput) {
                 date: FORMATTED_DATE.getFormattedDate(), 
                 hour: FORMATTED_TIME.time(),
             },
-            dateNextReview: null,
+            dateNextReview: 'null',
             doubleDays: 12,
         };
         

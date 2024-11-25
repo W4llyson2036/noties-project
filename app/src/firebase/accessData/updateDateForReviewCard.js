@@ -1,5 +1,5 @@
-import { db } from "../firebaseConfig";
-import { collection, updateDoc, doc, getDoc } from "firebase/firestore";
+import { db }                                   from "../firebaseConfig";
+import { collection, updateDoc, doc, getDoc }   from "firebase/firestore";
 
 export async function updateDateForReviewCard(collectionId, answerValue, cardId) {
     const collectionRef = collection(db, `user - ${localStorage.getItem('id')}`);

@@ -16,7 +16,7 @@ export async function getCardForReview(params) {
             createdAt: doc.data().createdAt ? {
                 date: doc.data().createdAt.date,
                 hour: doc.data().createdAt.hour,
-            } : null,
+            } : 'null',
             dateNextReview: doc.data().dateNextReview,
         }));
 
@@ -26,7 +26,7 @@ export async function getCardForReview(params) {
             const currentDateObj = new Date();
             const nextReviewDateObj = new Date(listCardsForReview[i].dateNextReview);
 
-            if (listCardsForReview[i].dateNextReview === null || nextReviewDateObj <= currentDateObj) {
+            if (listCardsForReview[i].dateNextReview == 'null' || nextReviewDateObj <= currentDateObj) {
                 listOfCardAvailableToReview.push(listCardsForReview[i]);
             }
         }

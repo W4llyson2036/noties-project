@@ -19,6 +19,13 @@ textarea {
     border: none;
 }
 
+mark {
+    background-color: rgb(136, 255, 93);
+    padding: 0.04rem;
+    border-radius: 20%;
+    color: black;
+}
+
 body {
     color: white;
     font-family: var(--ff);
