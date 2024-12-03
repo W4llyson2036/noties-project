@@ -73,7 +73,8 @@
 }
 
 .cardFront {
-  flex: 1;
+  width: 50%;
+  overflow: hidden;
   padding: 0.4rem;
   background-color: #585c63;
 }
