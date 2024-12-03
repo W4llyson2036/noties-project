@@ -31,8 +31,9 @@
 .hidden-answer-false { display: none; }
 .hidden-answer-true { 
     display: block; 
-    background-color: rgb(0, 75, 94);
     height: 100vh;
+    text-wrap: wrap;
+    word-break: break-word;
 }
 
 .box-review-card-button {
