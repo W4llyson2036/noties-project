@@ -1,10 +1,9 @@
 // lib
-import { Link }                 from "react-router-dom";
 import { useState, useEffect }  from "react";
 import { useQuery }             from "@tanstack/react-query";
 
 // Components
-import { UniversalButton }      from "../../../components/UniversalButton/UniversalButton";
+import { HomeButton }           from "./HomeButton/HomeButton";
 
 // Firebase
 import { removeDeck }           from "../../../firebase/removeDeck";
@@ -24,9 +23,7 @@ export function Home() {
     })
 
     useEffect(() => {
-        if (data) {
-            setDecks(data); 
-        }
+        if (data) { setDecks(data) };
     }, [data]);   
 
     // if (data.length == 0) {
@@ -52,46 +49,32 @@ export function Home() {
                 {isPending 
                     ?   <p>AWAIT A MOMENT!!!</p> 
                     :   <div className="container-deck">
-                        {decks.map((item, index) => (
-                            <div className="my-deck" key={index}>
-                                <p className="deck-name"> 
-                                    {item.deckName}
-                                </p>
-                                
-                                <div className="container-deck-buttons">
-                                    <Link to={`/home/createcard/${item.deckName}/${item.id}`} className="link"> 
-                                        <UniversalButton 
-                                            bg='#00A400' 
-                                            width='100%' 
-                                            value='add' 
-                                            padding='0.3rem'
-                                            onClick={() => add(item.id)}  
-                                            />
-                                    </Link>
-                    
-                                    <Link to={`/home/review/${item.deckName}/${item.id}`} className="link">
-                                        <UniversalButton 
-                                            bg='#485BFF' 
-                                            width='100%' 
-                                            value='review'
-                                            padding='0.3rem'  
-                                            totalCardAvailable={item.numberOfCards}  
-                                            />
-                                    </Link>
-                
-                                    <Link>
-                                        <UniversalButton 
+                            {decks.map((item, index) => (
+                                <div className="my-deck" key={index}>
+                                    <p className="deck-name">{item.deckName}</p>
+                                    <div className="container-deck-buttons">
+                                        <HomeButton 
+                                            name="add"
+                                            endpoint={`/home/createcard/${item.deckName}/${item.id}`}
+                                            bg="green"
+                                        />
+
+                                        <HomeButton 
+                                            name="reviewkkk"
+                                            endpoint={`/home/review/${item.deckName}/${item.id}`}
+                                            bg="blue"
+                                            availableCard={item.numberOfCards}
+                                        />
+
+                                        <HomeButton 
+                                            name="delete"
                                             bg='#FF2727' 
-                                            width='100%' 
-                                            value='delete'
-                                            padding='0.3rem' 
-                                            click={() => removeDeckFromUI(index, item.id)}   
-                                            />
-                                    </Link>
-                                </div>
-                            </div> 
-                        ))}
-                    </div>
+                                            setRemoveDeck={() => removeDeckFromUI(index, item.id)}   
+                                        />
+                                    </div>
+                                </div> 
+                            ))}
+                        </div>
                 }
         </section>
     )
