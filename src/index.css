@@ -1,0 +1,43 @@
+@charset "utf-8";
+@import url(variables.css);
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+a {
+    color: white;
+}
+
+textarea {
+    outline: none;
+    border: none;
+}
+
+mark {
+    background-color: rgb(136, 255, 93);
+    padding: 0.04rem;
+    border-radius: 20%;
+    color: black;
+}
+
+body {
+    color: white;
+    font-family: var(--ff);
+    background-attachment: fixed;
+    background-image: linear-gradient(to bottom, var(--bg-0), var(--bg-1));
+}
+
+input,
+button {
+    border: none;
+    outline: none;
+    border-style: none;
+}
+
+button { cursor: pointer;}

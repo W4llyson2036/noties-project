@@ -1,0 +1,64 @@
+.section-view-cards {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  
+  height: 100vh;
+  padding: 1rem;
+  margin-left: 275px;
+}
+
+.container-search-cards {
+  gap: 1rem;
+  display: flex;
+  width: 100%;
+  max-width: 550px;
+  margin-block: 0.5rem;
+  height: 50px;
+}
+
+.container-search-cards div {
+  display: flex;
+}
+
+.icon-search {
+  width: 50px;
+  transition: all 0.2s ease;
+  background-color: rgb(192, 192, 192);
+  padding: 0.4rem;
+}
+
+.icon-search-true:hover {
+  background-color: rgb(135, 252, 122);
+  cursor: pointer;
+}
+
+.icon-search-false:hover {
+  background-color: rgb(252, 122, 122);
+  cursor: pointer;
+}
+
+.container-search-cards > div {
+  flex: 1;
+  display: flex;
+}
+
+.container-search-cards > div > input {
+  width: 100%;
+  padding: 0.4rem;
+}
+
+.container-search-cards > select {
+  width: 100px;
+  padding: 0.6rem;
+}
+
+@media screen and (max-width: 48.75rem) {
+  .section-view-cards { margin: 0; }
+}
+
+.spinner-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}

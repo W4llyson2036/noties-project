@@ -1,0 +1,39 @@
+.section-create-new-deck {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 275px;
+    padding: 1rem;
+}
+
+.container-create-new-deck {
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    padding: 0.5rem;
+    border: #0095ff dashed 2px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.display-message-when-creating-deck {
+    text-align: center;
+    height: 1rem;
+}
+
+.deckWasCreated {color: rgb(127, 255, 106);}
+.deckWasNotCreated {color: red;}
+
+.input-field {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: white;
+}
+
+@media screen and (max-width: 48.75rem) {
+    .section-create-new-deck {
+        margin: 0;
+    }
+}

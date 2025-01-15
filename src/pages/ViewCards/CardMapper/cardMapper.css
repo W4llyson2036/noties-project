@@ -1,0 +1,71 @@
+.container-card {
+    display: flex;
+    width: 100%;
+    max-width: 550px;
+    min-height: 150px;
+    margin-block: 0.1rem;
+    border: 1px white solid;
+    overflow: hidden;
+    position: relative;
+}
+
+.cardFront {
+    position: relative;
+    width: 50%;
+    overflow: hidden;
+    padding: 0.4rem;
+    background-color: #585c63;
+}
+
+.tag-deck-name {
+    font-size: 0.8rem;
+    padding: 0.2rem 1rem;
+    background-color: rgb(71, 140, 206);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    left: 10px; 
+    right: 10px;
+    bottom: 10px;
+    position: absolute;
+}
+
+.cardBack {
+    flex: 1;
+    padding: 0.4rem;
+    background-color:  #1e2024;
+    position: relative;
+}
+
+.container-card-btns {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    position: absolute; 
+}
+
+.flexx {
+    gap: 0.4rem;
+    display: flex;
+    justify-content: end;
+}
+
+.btns {
+    color: white;
+    width: fit-content;
+    padding: 0.1rem 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.btn-edit { background-color: orange; }
+.btn-delete { background-color: red; }
+
+.text-card-not-found {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}

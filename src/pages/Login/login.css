@@ -1,0 +1,44 @@
+@import url(../../variables.css);
+
+.section-login {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-h1 {
+    color: white;
+    font-style: italic;
+    text-align: center;
+    font-family: var(--ff);
+    font-size: var(--fs-400);
+    font-size: clamp(3.3rem, 5vw + 1rem, var(--fs-400));
+}
+
+.login-main {
+    width: 500px;
+    padding: 1rem 1rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    margin-inline: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.login-input {
+    display: block;
+    width: 100%;
+    height: 2.25rem;
+    margin-block: 1em;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+}
+
+.login-message-erro {
+    height: 19px;
+    color: red;
+    margin-block: 0.6rem;
+}
+
+.btn-create-new-account { color: var(--color-gray);}

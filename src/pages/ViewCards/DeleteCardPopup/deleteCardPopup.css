@@ -1,0 +1,32 @@
+.container-delete-popup {
+    display: flex;
+    flex-direction: column;
+
+    padding: 1rem;
+    margin-inline: 1rem;
+    border-radius: 0.4rem;
+    background-color: white;
+    height: 100px;
+    color: black;
+}
+
+.container-delete-popup p {
+    margin-bottom: auto;
+}
+
+.container-delete-popup div {
+    gap: 0.4rem;
+    display: flex;
+    justify-content: end;
+}
+
+.container-delete-popup div button {
+    width: 100%;
+    max-width: 90px;
+    padding: 0.3rem;
+    color: white;
+    border-radius: 0.4rem;
+}
+
+.btn-confirm { background-color: rgb(113, 152, 54); }
+.btn-cancel { background-color: rgb(255, 34, 34); }

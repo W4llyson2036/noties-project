@@ -1,0 +1,68 @@
+@import url(../../../variables.css);
+
+.section-review-card {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin-left: 275px;    
+}
+
+.container-review-card { 
+    width: 42rem;
+    border-radius: 0.5rem;
+    padding-inline: 0.5rem;
+    border: #0095ff dashed 2px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-question,
+.card-answer {
+    padding: 0.5rem;
+    overflow-x: hidden;
+    margin-block: 0.5rem;
+    border-radius: 0.5rem;
+    border: solid #575757 0.1155rem;
+}
+
+.card-question { height: 8rem; }
+.card-answer { height: 15rem; }
+.hidden-answer-false { display: none; }
+.hidden-answer-true { 
+    display: block; 
+    height: 100vh;
+    text-wrap: wrap;
+    word-break: break-word;
+}
+
+.box-review-card-button {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.btn-show-answer {
+    width: 100%;
+    grid-column: span 2;
+}
+
+.deck-without-card-to-review {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: #0095ff dashed 2px;
+    padding: 0.5rem;
+}
+
+.deck-without-card-to-review > *{ margin-block: 0.5rem; }
+.deck-without-card-to-review p { text-align: center; }
+
+@media screen and (max-width: 48.75rem) {
+    .section-review-card {
+        margin: 0;    
+    }
+
+    .box-review-card-button div{
+        width: 100%;
+    }
+}

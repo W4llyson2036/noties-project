@@ -1,0 +1,67 @@
+.section-home {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin-left: 275px;
+}
+
+.container-home {
+    padding: 1rem;
+    text-align: center;
+    border: #55B8FF dashed 2px;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition-duration: 0.2s; 
+}
+
+.container-home:hover {
+    padding: 1.5625rem 1.5625rem;
+    border-color: rgb(43, 255, 0);
+}
+
+.container-deck {
+    height: 80vh;
+    width: 42rem;
+    padding: 0 0.5rem;
+    overflow-y: scroll;
+    border: #0095ff dashed 2px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.my-deck {
+    gap: 0.5rem;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    margin-block: 0.5rem;
+    background-color: #424242;
+}
+
+.icon-edit-text {
+    margin-right: 0.5rem;
+    width: 15px;
+    cursor: pointer;
+    height: 15px;
+}
+
+.deck-name,
+.container-deck-buttons,
+.container-deck-buttons a {
+    flex: 1;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+}
+
+.deck-name { overflow: hidden; }
+
+.container-deck-buttons {
+    gap: 0.5rem;
+    display: flex;
+}
+
+@media screen and (max-width: 48.75rem) {
+    .section-home { margin: 0; }
+    .my-deck { flex-direction: column; }
+}
