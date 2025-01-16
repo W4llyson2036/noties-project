@@ -31,7 +31,6 @@ export function SelectOption() {
     useEffect(() => {
         if (data) { setNameOfAllDecks(data); }
         setFilteredCard('All Cards');
-        console.log(filteredCard)
     }, [data])
 
     

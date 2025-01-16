@@ -33,6 +33,7 @@
     resize: none;
     height: 15rem;
     background-color: white;
+    color: black;
 }
 
 .create-card-button {
