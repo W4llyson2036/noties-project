@@ -7,6 +7,7 @@
     border: 1px white solid;
     overflow: hidden;
     position: relative;
+    word-wrap: break-word;
 }
 
 .cardFront {
@@ -31,7 +32,8 @@
 }
 
 .cardBack {
-    flex: 1;
+    width: 50%;
+    /* flex: 1; */
     padding: 0.4rem;
     background-color:  #1e2024;
     position: relative;

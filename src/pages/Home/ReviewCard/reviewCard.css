@@ -24,6 +24,8 @@
     margin-block: 0.5rem;
     border-radius: 0.5rem;
     border: solid #575757 0.1155rem;
+    text-wrap: wrap;
+    word-break: break-word;
 }
 
 .card-question { height: 8rem; }
