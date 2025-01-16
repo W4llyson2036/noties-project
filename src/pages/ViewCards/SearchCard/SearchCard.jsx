@@ -13,8 +13,8 @@ export function SearchCard() {
     const { setSearchQuery, cardSearchResetState } = useCardSearch();
     const { setFilteredCard } = useFilteredCardState();
 
-    function toggleIcon(ev) {
-        if (ev.target.dataset.action === 'searchClick') {
+    function toggleIcon() {
+        if (isIconState) {
             setSearchQuery(inputValue);
             setIsIconState(false);
             return;
@@ -35,17 +35,16 @@ export function SearchCard() {
                 placeholder='search-card' 
                 value={inputValue}
                 onChange={(ev) => setInputValue(ev.target.value)}
-                onClick={() => { 
-                    setIsIconState(true);
-                }}/>
+                onClick={() => {setIsIconState(true)}}
+            />
 
-            <div className={`icon-search ${isIconState ? "icon-search-true" : "icon-search-false"}`} onClick={(ev) => toggleIcon(ev)} >
+            <div className={`icon-search ${isIconState ? "icon-search-true" : "icon-search-false"}`} onClick={(ev) => toggleIcon(ev)}>
                 {isIconState
-                    ? <svg data-action="searchClick">
-                        <use href="/svg/icon-search.svg#icon-search" data-action="searchClick"></use>
+                    ? <svg>
+                        <use href="/svg/icon-search.svg#icon-search" ></use>
                       </svg>
-                    : <svg data-action="searchClean">
-                        <use xlinkHref="/public/icon-delete.svg#icon-delete" data-action="searchClean"></use>
+                    : <svg>
+                        <use href="/svg/icon-delete.svg#icon-delete"></use>
                       </svg>}
             </div>
         </div>
