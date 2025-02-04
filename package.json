@@ -1,7 +1,9 @@
 {
-  "name": "fix-no-ties",
+  "name": "no-ties",
+  "author": "Wallyson 2036",
+  "description": "Study app",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
